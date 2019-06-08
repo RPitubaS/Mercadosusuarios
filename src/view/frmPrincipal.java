@@ -107,57 +107,60 @@ public class frmPrincipal extends javax.swing.JFrame {
               System.exit(0);
            }
         
-        List<Usuario> selecionandousuario = new ArrayList<>();
-        UsuariosDAO usdao = new UsuariosDAO();
-        selecionandousuario = usdao.selecionaradmin();
-        if(!selecionandousuario.isEmpty()){
-           abrirentrar(); 
-           txtLognickentrar.requestFocus();
-           mnEntrar.setEnabled(false);
-           mnFecharEntrar.setEnabled(true);
-           mnNovousuario.setEnabled(true);
-           mnFecharNovousuario.setEnabled(false);
-           btnEntrar.setEnabled(false);
-
-           if(frmLogin.getInstancia().isSelected()){
-              gerenciadordejanelas.fecharjanelas(frmLogin.getInstancia());
-           }
-        }
-        if(selecionandousuario.isEmpty()){
-            abrirlogin();
-            //frmLogin frmlogin = new frmLogin();
-            txtLognick.requestFocus();
-            cbxAdministrador.setSelected(false);
-            txtNome.setEnabled(true);
-            txtNome.requestFocus();
-            txtSenha.setEnabled(true);
-            txtConfsenha.setEnabled(true);
-            cbxAdministrador.setEnabled(true);
-            btnCadastro.setEnabled(true);
-            txtLognick.setText("");
-            txtLogsenha.setText("");
-            //frmlogin.setClosable(true);
-            mnNovousuario.setEnabled(false);
-            mnFecharNovousuario.setEnabled(true);
-            mnEntrar.setEnabled(true);
-            mnFecharEntrar.setEnabled(false);
-            btnEntrar.setEnabled(false);
-            btnLogin.setEnabled(false);
-            
-            RefazerConexao rfcinicio = new RefazerConexao();
-            rfcinicio.refazerconexao();
-            List<Usuario> selecionandoadministrador = new ArrayList<>();
-            UsuariosDAO admindao = new UsuariosDAO();
-            selecionandoadministrador = admindao.selecionaradmin();
-            if(selecionandoadministrador.isEmpty()){
-              cbxAdministrador.setSelected(true);
-              cbxAdministrador.setEnabled(false);
-            }
-            if(frmEntrar.getInstancia().isSelected()){
-               gerenciadordejanelas.fecharjanelas(frmEntrar.getInstancia());
-            }
-           
-        }
+//        List<Usuario> selecionandousuario = new ArrayList<>();
+//        UsuariosDAO usdao = new UsuariosDAO();
+//        selecionandousuario = usdao.selecionaradmin();
+//        if(!selecionandousuario.isEmpty()){
+//           abrirentrar(); 
+//           txtLognickentrar.requestFocus();
+//           mnEntrar.setEnabled(false);
+//           mnFecharEntrar.setEnabled(true);
+//           mnNovousuario.setEnabled(true);
+//           mnFecharNovousuario.setEnabled(false);
+//           btnEntrar.setEnabled(false);
+//
+//           if(frmLogin.getInstancia().isSelected()){
+//              gerenciadordejanelas.fecharjanelas(frmLogin.getInstancia());
+//           }
+//        }
+//        if(selecionandousuario.isEmpty()){
+//            abrirlogin();
+//            //frmLogin frmlogin = new frmLogin();
+//            txtLognick.requestFocus();
+//            cbxAdministrador.setSelected(false);
+//            txtNome.setEnabled(true);
+//            txtNome.requestFocus();
+//            txtSenha.setEnabled(true);
+//            txtConfsenha.setEnabled(true);
+//            cbxAdministrador.setEnabled(true);
+//            btnCadastro.setEnabled(true);
+//            txtLognick.setText("");
+//            txtLogsenha.setText("");
+//            //frmlogin.setClosable(true);
+//            mnNovousuario.setEnabled(false);
+//            mnFecharNovousuario.setEnabled(true);
+//            mnEntrar.setEnabled(true);
+//            mnFecharEntrar.setEnabled(false);
+//            btnEntrar.setEnabled(false);
+//            btnLogin.setEnabled(false);
+//            
+//            RefazerConexao rfcinicio = new RefazerConexao();
+//            rfcinicio.refazerconexao();
+//            List<Usuario> selecionandoadministrador = new ArrayList<>();
+//            UsuariosDAO admindao = new UsuariosDAO();
+//            selecionandoadministrador = admindao.selecionaradmin();
+//            if(selecionandoadministrador.isEmpty()){
+//              cbxAdministrador.setSelected(true);
+//              cbxAdministrador.setEnabled(false);
+//            }
+//            if(frmEntrar.getInstancia().isSelected()){
+//               gerenciadordejanelas.fecharjanelas(frmEntrar.getInstancia());
+//            }
+//           
+//        }
+        btnEntrar.setVisible(false);
+        btnLogin.setVisible(false);
+        mnUsuarios.setVisible(false);
     }
     
     public void abrirlogin(){
@@ -192,8 +195,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         dtpDescktop = new javax.swing.JDesktopPane();
         tbrBarraFerramentas = new javax.swing.JToolBar();
         btnCaixa = new javax.swing.JButton();
-        btnEntrar = new javax.swing.JButton();
-        btnLogin = new javax.swing.JButton();
         btnRelatorio = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
         btnAdministrador = new javax.swing.JButton();
@@ -201,6 +202,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JToolBar.Separator();
         jSeparator6 = new javax.swing.JToolBar.Separator();
         btnBackup = new javax.swing.JButton();
+        btnEntrar = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         mnBarraMenu = new javax.swing.JMenuBar();
         mnMovimento = new javax.swing.JMenu();
         mnCaixa = new javax.swing.JMenuItem();
@@ -252,38 +255,6 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
         tbrBarraFerramentas.add(btnCaixa);
-
-        btnEntrar.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
-        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/App-login-manager1-icon.png"))); // NOI18N
-        btnEntrar.setText("Login");
-        btnEntrar.setFocusable(false);
-        btnEntrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEntrar.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnEntrar.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnEntrar.setPreferredSize(new java.awt.Dimension(50, 50));
-        btnEntrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntrarActionPerformed(evt);
-            }
-        });
-        tbrBarraFerramentas.add(btnEntrar);
-
-        btnLogin.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
-        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/person_user_customer_man_male_man_boy_people_1687.png"))); // NOI18N
-        btnLogin.setText("novo usu");
-        btnLogin.setFocusable(false);
-        btnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnLogin.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnLogin.setMinimumSize(new java.awt.Dimension(50, 50));
-        btnLogin.setPreferredSize(new java.awt.Dimension(50, 50));
-        btnLogin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
-            }
-        });
-        tbrBarraFerramentas.add(btnLogin);
 
         btnRelatorio.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
         btnRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/trade_report_reports_documents_2351.png"))); // NOI18N
@@ -356,6 +327,38 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
         tbrBarraFerramentas.add(btnBackup);
+
+        btnEntrar.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
+        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/App-login-manager1-icon.png"))); // NOI18N
+        btnEntrar.setText("Login");
+        btnEntrar.setFocusable(false);
+        btnEntrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEntrar.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnEntrar.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnEntrar.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnEntrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
+        tbrBarraFerramentas.add(btnEntrar);
+
+        btnLogin.setFont(new java.awt.Font("Tahoma", 1, 8)); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/person_user_customer_man_male_man_boy_people_1687.png"))); // NOI18N
+        btnLogin.setText("novo usu");
+        btnLogin.setFocusable(false);
+        btnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLogin.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnLogin.setMinimumSize(new java.awt.Dimension(50, 50));
+        btnLogin.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnLogin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        tbrBarraFerramentas.add(btnLogin);
 
         mnMovimento.setText("Arquivo");
         mnMovimento.addActionListener(new java.awt.event.ActionListener() {
